@@ -9,41 +9,49 @@ if (isset($_POST["nome"]) || isset($_POST["senha"])) {
     } else if (strlen($_POST["senha"]) == 0) {
         $erro = 'Preencha Sua Senha!';
     } else {
-        // Escapa os dados de entrada
+        // Escapa os dados de entrada para prevenir SQL Injection
         $nome = $mysqli->real_escape_string($_POST['nome']);
-        $senha = $mysqli->real_escape_string($_POST['senha']);
+        $senha = $_POST['senha']; // A senha em texto puro do formulário
 
-
-        // Defina a senha do usuário principal
-        $senha = 'minha_senha_secreta';
-        
-        // Gera o hash SHA-256 da senha
-        $hash_senha = hash('sha256', $senha);
-    
-        
-
-        // SQL para selecionar o usuário com a senha hash
-        $sql_code = "SELECT * FROM login WHERE nome_login = '$nome' AND senha_login = '$hash_senha'";
+        // SQL para selecionar o usuário pelo nome de login
+        $sql_code = "SELECT * FROM login WHERE nome_login = '$nome'";
         $sql_query = $mysqli->query($sql_code) or die("Falha na Execução do Código SQL: " . $mysqli->error);
 
-        $quantidade = $sql_query->num_rows;
-
-        if ($quantidade == 1) {
+        // Verifica se o usuário existe
+        if ($sql_query->num_rows == 1) {
             $usuario = $sql_query->fetch_assoc();
+            
+            // Pega o hash da senha armazenada no banco de dados
+            $hash_senha_banco = $usuario['senha_criptografada'];
 
-            if (!isset($_SESSION)) {
-                session_start();
+            // Se a senha ainda não estiver hashada, cria o hash e atualiza no banco
+            if (empty($hash_senha_banco)) {
+                // Gera o hash da senha
+                $hash_senha = password_hash($senha, PASSWORD_DEFAULT);
+
+                // SQL para atualizar a senha criptografada no banco de dados
+                $sql_update = "UPDATE login SET senha_criptografada = '$hash_senha' WHERE id_login = " . $usuario['id_login'];
+                $mysqli->query($sql_update) or die("Falha ao atualizar a senha criptografada: " . $mysqli->error);
             }
 
-            // Armazena os dados do usuário na sessão
-            $_SESSION['id'] = $usuario['id_login'];
-            $_SESSION['nome'] = $usuario['nome_login'];
-             
-            // Redireciona para o painel
-            header("Location: painel.php");
-            exit(); // Encerra a execução após o redirecionamento
+            // Verifica se a senha inserida corresponde ao hash armazenado
+            if (password_verify($senha, $usuario['senha_criptografada'])) {
+                if (!isset($_SESSION)) {
+                    session_start();
+                }
+
+                // Armazena os dados do usuário na sessão
+                $_SESSION['id'] = $usuario['id_login'];
+                $_SESSION['nome'] = $usuario['nome_login'];
+
+                // Redireciona para o painel
+                header("Location: painel.php");
+                exit(); // Encerra a execução após o redirecionamento
+            } else {
+                $erro = "Falha Ao Logar! NOME OU SENHA INVALIDOS!";
+            }
         } else {
-            $erro = "Falha Ao Logar! NOME OU SENHA INVALIDOS!";
+            $erro = "Falha Ao Logar! Usuário não encontrado!";
         }
     }
 }
