@@ -1,0 +1,96 @@
+/* Estilo geral */
+body {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #2c2c2c;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    text-align: center;
+    color: #f1f1f1;
+    margin-bottom: 20px;
+}
+
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #333;
+    color: #f1f1f1;
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #444;
+}
+
+table th {
+    background-color: #444;
+    color: #fff;
+}
+
+table tr:hover {
+    background-color: #555;
+}
+
+/* Botões */
+button, a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px 0;
+    font-size: 14px;
+    color: #fff;
+    background-color: #cddc39;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover, a:hover {
+    background-color: #727d0d;
+}
+
+/* Estilo dos links */
+a {
+    color: #fff;
+}
+
+a.delete {
+    background-color: #dc3545;
+}
+
+a.delete:hover {
+    background-color: #c82333;
+}
+
+/* Alerta de sucesso/erro */
+.alert {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.alert-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.alert-error {
+    background-color: #dc3545;
+    color: #fff;
+}

@@ -11,7 +11,7 @@ if (isset($_POST["nome"]) || isset($_POST["senha"])) {
     } else {
         // Escapa os dados de entrada para prevenir SQL Injection
         $nome = $mysqli->real_escape_string($_POST['nome']);
-        $senha = $_POST['senha']; // A senha em texto puro do formulário
+        $senha = $mysqli->real_escape_string($_POST['senha']);
 
         // SQL para selecionar o usuário pelo nome de login
         $sql_code = "SELECT * FROM login WHERE nome_login = '$nome'";
@@ -24,8 +24,8 @@ if (isset($_POST["nome"]) || isset($_POST["senha"])) {
             // Pega o hash da senha armazenada no banco de dados
             $hash_senha_banco = $usuario['senha_criptografada'];
 
-            // Se a senha ainda não estiver hashada, cria o hash e atualiza no banco
-            if (empty($hash_senha_banco)) {
+            // Atualiza a senha criptografada sempre que houver um logout do usuario. 
+            if (!empty($hash_senha_banco)) {
                 // Gera o hash da senha
                 $hash_senha = password_hash($senha, PASSWORD_DEFAULT);
 
