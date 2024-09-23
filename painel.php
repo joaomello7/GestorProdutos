@@ -21,14 +21,16 @@ if (!isset($_SESSION['id'])) {
 <body>
 
     <!-- Navbar -->
-    <nav>
-        <ul>
-            <li><a href="produtos.php">Produtos</a></li>
-            <li><a href="fornecedores.php">Fornecedores</a></li>
-            <li><a href="cesta.php">Criar Cesta</a></li>
-            <li><a href="logout.php">Logout</a></li>
-        </ul>
-    </nav>
+    <div id="navegar">
+        <nav>
+            <ul>
+                <li><a href="produtos.php">Produtos</a></li>
+                <li><a href="fornecedores.php">Fornecedores</a></li>
+                <li><a href="cesta.php">Criar Cesta</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
 
     <!-- Conteúdo Principal -->
     <div class="container">

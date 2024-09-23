@@ -19,6 +19,7 @@ $sql_query = $mysqli->query($sql_code) or die($mysqli->error);
     <div class="container">
         <h1>Fornecedores</h1>
         <a class="back-link" href="painel.php">Voltar ao Painel</a>
+        <a class="back-link" href="cadastrarFornecedor.php">Cadastrar Fornecedor</a>
 
         <table>
             <thead>

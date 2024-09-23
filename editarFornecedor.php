@@ -12,9 +12,7 @@ $fornecedor = $sql_query->fetch_assoc();
 if (isset($_POST['NomeFornecedor']) && isset($_POST['EmpresaFornecedor']) && isset($_POST['ContatoFornecedor'])) {
     $nome = $_POST['NomeFornecedor'];
     $empresa = $_POST['EmpresaFornecedor'];
-    $contato = $_POST['ContatoFornecedor'];
-
-    // Atualiza o fornecedor no banco de dados
+    $contato = $_POST['ContatoFornecedor'];    // Atualiza o fornecedor no banco de dados
     $sql_update = "UPDATE fornecedores SET nome = '$nome', empresa = '$empresa', contato = '$contato' WHERE id = $id";
     $mysqli->query($sql_update) or die($mysqli->error);
 
