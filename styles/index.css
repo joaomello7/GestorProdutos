@@ -45,7 +45,6 @@ input {
 input::placeholder {
     color: #888;
 }
-
 button {
     width: 100%;
     padding: 10px;
@@ -63,7 +62,7 @@ button:hover {
 
 div {
     margin-bottom: 15px;
-}
+}   
 /* Estilo da mensagem de erro */
 .error-message {
     background-color: #ffcc00; /* Fundo amarelo */
@@ -75,3 +74,20 @@ div {
     text-align: center;
     font-weight: bold;
 }
+body .cadastro a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #3498db;
+    padding: 10px 20px;
+    border: 2px solid #3498db;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+body .cadastro a:hover {
+    background-color: #2980b9;
+    color: #ffffff;
+}
+    

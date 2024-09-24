@@ -50,7 +50,6 @@ if (isset($_GET['id'])) {
     <div class="container">
         <h1>Editar Produto</h1>
         <form action="" method="POST">
-            <button> <a href="produtos.php">Voltar</a></button><br><br>
             <label for="nome">Nome:</label>
             <input type="text" name="nome" value="<?= $produto['nome'] ?>" required>
 
@@ -74,7 +73,7 @@ if (isset($_GET['id'])) {
 
             <button type="submit">Salvar Alterações</button>
         </form>
-    </div>              
+    </div>
 </body>
 
 </html>
