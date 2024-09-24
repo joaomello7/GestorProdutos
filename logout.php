@@ -7,6 +7,6 @@ if (isset($_SESSION['id'])) {
 }
 
 // Redireciona o usuário para a página de login (index.php)
-header("Location: cadastro.php");
+header("Location: index.php");
 exit();
 ?>
