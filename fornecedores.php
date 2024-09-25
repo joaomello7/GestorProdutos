@@ -12,7 +12,7 @@ $sql_query = $mysqli->query($sql_code) or die($mysqli->error);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fornecedores</title>
-    <link rel="stylesheet" href="styles/fornecedores.css"> <!-- Vinculando o CSS externo -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Inclui jQuery -->
 </head>
 <body>
 
@@ -30,23 +30,53 @@ $sql_query = $mysqli->query($sql_code) or die($mysqli->error);
                     <th>Ações</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="fornecedores-tbody"> <!-- ID para acessar via jQuery -->
                 <?php while ($fornecedor = $sql_query->fetch_assoc()): ?>
-                    <tr>
+                    <tr id="fornecedor-<?php echo $fornecedor['id']; ?>"> <!-- Adiciona um ID único para cada linha -->
                         <td><?php echo $fornecedor['nome']; ?></td>
                         <td><?php echo $fornecedor['empresa']; ?></td>
                         <td><?php echo $fornecedor['contato']; ?></td>
                         <td>
                             <!-- Link para editar o fornecedor -->
                             <a href="editarFornecedor.php?id=<?php echo $fornecedor['id']; ?>">Editar</a> | 
-                            <!-- Link para deletar o fornecedor -->
-                            <a href="deletarFornecedor.php?id=<?php echo $fornecedor['id']; ?>" onclick="return confirm('Tem certeza que deseja excluir este fornecedor?')">Deletar</a>
+                            <!-- Botão para deletar via AJAX -->
+                            <button class="delete-btn" data-id="<?php echo $fornecedor['id']; ?>">Deletar</button>
                         </td>
                     </tr>
                 <?php endwhile; ?>
             </tbody>
         </table>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            // Manipulador de clique para o botão de exclusão
+            $('.delete-btn').click(function() {
+                const id = $(this).data('id'); // Obtém o ID do fornecedor
+
+                if (confirm('Tem certeza que deseja excluir este fornecedor?')) {
+                    $.ajax({
+                        url: 'deletarFornecedor.php',
+                        type: 'POST',
+                        data: { id: id },
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.success) {
+                                // Remove a linha da tabela
+                                $('#fornecedor-' + id).remove();
+                                alert(response.message);
+                            } else {
+                                alert(response.message); // Exibe mensagem de erro se houver
+                            }
+                        },
+                        error: function() {
+                            alert('Erro ao tentar excluir o fornecedor.');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>

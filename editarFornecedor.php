@@ -30,7 +30,6 @@ if (isset($_POST['NomeFornecedor']) && isset($_POST['EmpresaFornecedor']) && iss
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Fornecedor</title>
-    <link rel="stylesheet" href="styles/darkmode.css"> <!-- Vinculando o CSS externo -->
 </head>
 
 <body>

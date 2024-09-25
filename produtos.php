@@ -28,7 +28,6 @@ $produtos = listarProdutos($mysqli);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos</title>
-    <link rel="stylesheet" href="styles/produtos.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         // Função para verificar se pelo menos uma checkbox está marcada

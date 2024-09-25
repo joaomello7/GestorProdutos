@@ -64,33 +64,35 @@ if (isset($_POST["nome"]) || isset($_POST["senha"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="styles/index.css"> <!-- Vinculando o CSS externo -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-[#ebe7e0] flex items-center justify-center min-h-screen">
 
-    <form action="" method="POST">
-        <h2>Login</h2>
+    <form action="" method="POST" class="bg-white p-6 rounded-lg shadow-md w-96">
+        <h2 class="text-xl font-bold mb-4 text-center text-[#44749d]">Login</h2>
 
         <!-- Exibe a mensagem de erro se houver -->
         <?php if ($erro): ?>
-            <div class="error-message">
+            <div class="bg-red-500 text-white p-2 mb-4 rounded">
                 <?php echo $erro; ?>
             </div>
         <?php endif; ?>
 
-        <div>
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" required>
+        <div class="mb-4">
+            <label for="nome" class="block text-sm font-medium text-gray-700">Nome:</label>
+            <input type="text" id="nome" name="nome" required class="mt-1 p-2 border border-gray-300 rounded-md w-full">
         </div>
-        <div>
-            <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha" required>
+        <div class="mb-4">
+            <label for="senha" class="block text-sm font-medium text-gray-700">Senha:</label>
+            <input type="password" id="senha" name="senha" required class="mt-1 p-2 border border-gray-300 rounded-md w-full">
         </div>
-        <div>
-            <button type="submit">Entrar</button>
-            <a href="index.php">Não Possuí Cadastro?Faça agora!</a>
+        <div class="flex justify-between items-center">
+            <button type="submit" style="background-color: #44749d; color: white;" class="w-full p-2 rounded-md hover:bg-[#365f7e] transition duration-200">Entrar</button>
         </div>
+        <div class="text-center mt-4">
+        <a href="index.php" class="text-sm text-[#44749d] hover:underline">Não Possuí Cadastro? Faça agora!</a>
+    </div>
     </form>
 </body>
 

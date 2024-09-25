@@ -78,7 +78,6 @@ if (count($_POST) > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Produto</title>
-    <link rel="stylesheet" href="styles/cadastrarProduto.css"> <!-- Link para o CSS externo -->
 </head>
 
 <body>

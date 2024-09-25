@@ -47,35 +47,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Usuário</title>
-    <link rel="stylesheet" href="styles/cadastro.css"> <!-- Vinculando o CSS externo -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-[#c6d4e1] flex items-center justify-center min-h-screen">
 
-    <form action="" method="POST">
-        <h2>Cadastro</h2>
+    <form action="" method="POST" class="bg-white rounded-lg shadow-lg p-6 w-80">
+        <h2 class="text-center text-lg font-semibold text-[#44749d]">Cadastro</h2>
 
         <!-- Exibe a mensagem de erro ou sucesso -->
         <?php if ($erro): ?>
-            <div class="message">
+            <div class="text-red-600 text-sm text-center mb-4">
                 <?php echo $erro; ?>
             </div>
         <?php endif; ?>
 
-        <div>
-            <label for="nome">Nome:</label>
-            <input type="text" id="nome" name="nome" value="<?php echo isset($_POST['nome']) ? $_POST['nome'] : ''; ?>" required>
+        <div class="mb-4">
+            <label for="nome" class="block text-sm text-[#44749d]">Nome:</label>
+            <input type="text" id="nome" name="nome" value="<?php echo isset($_POST['nome']) ? $_POST['nome'] : ''; ?>" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-[#44749d]">
         </div>
-        <div>
-            <label for="senha">Senha:</label>
-            <input type="password" id="senha" name="senha" required>
+        <div class="mb-4">
+            <label for="senha" class="block text-sm text-[#44749d]">Senha:</label>
+            <input type="password" id="senha" name="senha" required class="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring focus:ring-[#44749d]">
         </div>
-        <div>
-            <button type="submit">Cadastrar</button>
+        <div class="mb-4">
+        <button type="submit" style="background-color: #44749d; color: white;" class="w-full p-2 rounded-md hover:bg-[#365f7e] transition duration-200">Cadastrar</button>
         </div>
 
-        <div class="link-login">
-            <a href="login.php">Já possui uma conta? Faça login!</a>
+        <div class="text-center">
+            <a href="login.php" class="text-[#44749d] hover:underline">Já possui uma conta? Faça login!</a>
         </div>
     </form>
 
