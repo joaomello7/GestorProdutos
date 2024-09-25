@@ -78,44 +78,48 @@ if (count($_POST) > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Produto</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> <!-- Inclui Tailwind CSS -->
 </head>
 
-<body>
+<body class="bg-[#ebe7e0] text-gray-900">
 
-    <div class="container">
+    <div class="container mx-auto p-6 bg-white rounded-lg shadow-lg mt-6">
+        <h1 class="text-2xl font-bold text-[#44749d] mb-4">Cadastrar Produto</h1>
+
         <form action="" method="post">
-            <p>
-                <label>Nome do Produto</label><br>
-                <input value="<?php if (isset($_POST['NomeProduto'])) echo $_POST['NomeProduto']; ?>" name="NomeProduto" type="text">
-            </p>
-            <p>
-                <label>Descrição do Produto</label><br>
-                <input value="<?php if (isset($_POST['DescricaoProduto'])) echo $_POST['DescricaoProduto']; ?>" name="DescricaoProduto" type="text">
-            </p>
-            <p>
-                <label>Valor</label><br>
-                <input value="<?php if (isset($_POST['ValorProduto'])) echo $_POST['ValorProduto']; ?>" name="ValorProduto" type="text">
-            </p>
-            <p>
-                <label>Quantidade</label><br>
-                <input value="<?php if (isset($_POST['QuantidadeProduto'])) echo $_POST['QuantidadeProduto']; ?>" name="QuantidadeProduto" type="text">
-            </p>
-            <p>
-                <label>Fornecedor</label><br>
-                <select name="FornecedorProduto" required>
+            <div class="mb-4">
+                <label class="block text-gray-700">Nome do Produto</label>
+                <input value="<?php if (isset($_POST['NomeProduto'])) echo $_POST['NomeProduto']; ?>" name="NomeProduto" type="text" class="w-full p-2 border border-gray-300 rounded mt-2">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Descrição do Produto</label>
+                <input value="<?php if (isset($_POST['DescricaoProduto'])) echo $_POST['DescricaoProduto']; ?>" name="DescricaoProduto" type="text" class="w-full p-2 border border-gray-300 rounded mt-2">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Valor</label>
+                <input value="<?php if (isset($_POST['ValorProduto'])) echo $_POST['ValorProduto']; ?>" name="ValorProduto" type="text" class="w-full p-2 border border-gray-300 rounded mt-2">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Quantidade</label>
+                <input value="<?php if (isset($_POST['QuantidadeProduto'])) echo $_POST['QuantidadeProduto']; ?>" name="QuantidadeProduto" type="text" class="w-full p-2 border border-gray-300 rounded mt-2">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700">Fornecedor</label>
+                <select name="FornecedorProduto" required class="w-full p-2 border border-gray-300 rounded mt-2">
                     <option value="">Selecione um fornecedor</option>
                     <?php foreach ($fornecedores as $fornecedor): ?>
                         <option value="<?php echo $fornecedor['id']; ?>"><?php echo $fornecedor['nome']; ?></option>
                     <?php endforeach; ?>
                 </select>
-            </p>
-            <p>
-                <button type="submit">Salvar</button>
-                <a class="back-link" href="produtos.php">Voltar</a>
-            </p>
+            </div>
+            <div class="flex justify-between">
+                <button type="submit" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition">Salvar</button>
+                <a class="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-800 transition" href="produtos.php">Voltar</a>
+            </div>
         </form>
     </div>
 
 </body>
 
 </html>
+                        

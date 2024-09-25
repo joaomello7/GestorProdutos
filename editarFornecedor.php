@@ -30,29 +30,30 @@ if (isset($_POST['NomeFornecedor']) && isset($_POST['EmpresaFornecedor']) && iss
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Fornecedor</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> <!-- Inclui Tailwind CSS -->
 </head>
 
-<body>
+<body class="bg-[#ebe7e0] text-gray-900">
 
-    <div class="container">
-        <h1>Editar Fornecedor</h1>
-        <a class="back-link" href="fornecedores.php">Voltar para a lista de Fornecedores</a>
+    <div class="container mx-auto p-6 bg-white rounded-lg shadow-lg mt-6">
+        <h1 class="text-2xl font-bold text-[#44749d] mb-4">Editar Fornecedor</h1>
+        <a class="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-800 transition mb-4 inline-block" href="fornecedores.php">Voltar para a lista de Fornecedores</a>
 
         <form action="" method="post">
-            <div class="form-group">
-                <label for="NomeFornecedor">Nome</label>
-                <input value="<?php echo $fornecedor['nome']; ?>" name="NomeFornecedor" id="NomeFornecedor" type="text" required>
+            <div class="mb-4">
+                <label for="NomeFornecedor" class="block text-gray-700">Nome</label>
+                <input value="<?php echo $fornecedor['nome']; ?>" name="NomeFornecedor" id="NomeFornecedor" type="text" required class="w-full p-2 border border-gray-300 rounded mt-2">
             </div>
-            <div class="form-group">
-                <label for="EmpresaFornecedor">Empresa</label>
-                <input value="<?php echo $fornecedor['empresa']; ?>" name="EmpresaFornecedor" id="EmpresaFornecedor" type="text" required>
+            <div class="mb-4">
+                <label for="EmpresaFornecedor" class="block text-gray-700">Empresa</label>
+                <input value="<?php echo $fornecedor['empresa']; ?>" name="EmpresaFornecedor" id="EmpresaFornecedor" type="text" required class="w-full p-2 border border-gray-300 rounded mt-2">
             </div>
-            <div class="form-group">
-                <label for="ContatoFornecedor">Contato</label>
-                <input value="<?php echo $fornecedor['contato']; ?>" name="ContatoFornecedor" id="ContatoFornecedor" type="text" required>
+            <div class="mb-4">
+                <label for="ContatoFornecedor" class="block text-gray-700">Contato</label>
+                <input value="<?php echo $fornecedor['contato']; ?>" name="ContatoFornecedor" id="ContatoFornecedor" type="text" required class="w-full p-2 border border-gray-300 rounded mt-2">
             </div>
-            <div class="form-group">
-                <button type="submit">Salvar Alterações</button>
+            <div class="mb-4">
+                <button type="submit" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition">Salvar Alterações</button>
             </div>
         </form>
     </div>

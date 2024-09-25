@@ -2,7 +2,8 @@
 include('conexao.php');
 
 // Função para listar produtos
-function listarProdutos($mysqli) {
+function listarProdutos($mysqli)
+{
     $sql_code = "SELECT p.*, f.nome AS nome_fornecedor FROM produtos p
                  LEFT JOIN fornecedores f ON p.fornecedor_id = f.id";
     $sql_query = $mysqli->query($sql_code) or die($mysqli->error);
@@ -24,11 +25,15 @@ $produtos = listarProdutos($mysqli);
 <!DOCTYPE html>
 <html lang="pt-BR">
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script>
         // Função para verificar se pelo menos uma checkbox está marcada
         function validarSelecao() {
@@ -72,49 +77,59 @@ $produtos = listarProdutos($mysqli);
     </script>
 </head>
 
-<body>
-    <div class="container">
-        <h1>Lista de Produtos</h1>
-        <a href="cadastrarProduto.php" class="add-btn">Cadastrar Novo Produto</a>
-        <a href="painel.php" class="add-btn">Voltar</a>
+<body class="bg-[#ebe7e0] text-gray-900">
+    <div class="container mx-auto p-6 bg-white rounded-lg shadow-lg mt-6">
+        <h1 class="text-2xl font-bold text-[#44749d]">Lista de Produtos</h1>
+        <div class="mt-4">
+            <a href="cadastrarProduto.php"
+                class="bg-blue-700 text-white px-8 py-2 rounded hover:bg-blue-800 transition">Cadastrar Novo Produto</a>
+            <a href="painel.php"
+                class="ml-4 bg-blue-700 text-white px-8 py-2 rounded hover:bg-blue-800 transition">Voltar</a>
+        </div>
 
-        <!-- Formulário para enviar os produtos selecionados -->
-        <form id="cestaForm" action="cesta.php" method="POST">
-            <table>
-                <thead>
+        <form id="cestaForm" action="cesta.php" method="POST" class="mt-6">
+            <table class="min-w-full bg-white">
+                <thead class="bg-[#44749d] text-white">
                     <tr>
-                        <th>Selecionar</th>
-                        <th>Nome</th>
-                        <th>Descrição</th>
-                        <th>Valor</th>
-                        <th>Quantidade</th>
-                        <th>Total</th>
-                        <th>Fornecedor</th>
-                        <th>Ações</th>
+                        <th class="py-2 px-4">Selecionar</th>
+                        <th class="py-2 px-4">Nome</th>
+                        <th class="py-2 px-4">Descrição</th>
+                        <th class="py-2 px-4">Valor</th>
+                        <th class="py-2 px-4">Quantidade</th>
+                        <th class="py-2 px-4">Total</th>
+                        <th class="py-2 px-4">Fornecedor</th>
+                        <th class="py-2 px-4">Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php while ($produto = $produtos->fetch_assoc()): ?>
-                        <tr>
-                            <td>
+                        <tr class="border-b">
+                            <td class="py-2 px-4">
                                 <input type="checkbox" name="produtos[]" value="<?= $produto['id'] ?>">
                             </td>
-                            <td><?= $produto['nome'] ?></td>
-                            <td><?= $produto['descricao'] ?></td>
-                            <td>R$ <?= number_format($produto['valor'], 2, ',', '.') ?></td>
-                            <td><?= $produto['quantidade'] ?></td>
-                            <td>R$ <?= number_format($produto['total'], 2, ',', '.') ?></td>
-                            <td><?= $produto['nome_fornecedor'] ?></td>
-                            <td>
-                                <a href="editarProduto.php?id=<?= $produto['id'] ?>" class="edit-btn">Editar</a>
-                                <a href="produtos.php?delete=<?= $produto['id'] ?>" onclick="return confirm('Deseja realmente deletar o produto?')" class="delete-btn">Deletar</a>
+                            <td class="py-2 px-4"><?= $produto['nome'] ?></td>
+                            <td class="py-2 px-4"><?= $produto['descricao'] ?></td>
+                            <td class="py-2 px-4">R$ <?= number_format($produto['valor'], 2, ',', '.') ?></td>
+                            <td class="py-2 px-4"><?= $produto['quantidade'] ?></td>
+                            <td class="py-2 px-4">R$ <?= number_format($produto['total'], 2, ',', '.') ?></td>
+                            <td class="py-2 px-4"><?= $produto['nome_fornecedor'] ?></td>
+                            <td class="py-2 px-4">
+                                <a href="editarProduto.php?id=<?= $produto['id'] ?>"
+                                    class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition">Editar</a>
+                                <a href="produtos.php?delete=<?= $produto['id'] ?>"
+                                    onclick="return confirm('Deseja realmente deletar o produto?')"
+                                    class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition">Deletar</a>
                             </td>
                         </tr>
                     <?php endwhile; ?>
                 </tbody>
             </table>
+            <br>
+            <button type="submit"
+                class="bg-green-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition">Adicionar à
+                Cesta</button>
 
-            <button type="submit" class="add-to-cart-btn">Adicionar à Cesta</button>
+
         </form>
     </div>
 </body>

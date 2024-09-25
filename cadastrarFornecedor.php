@@ -28,14 +28,14 @@ if (count($_POST) > 0) {
     }
 
     if ($erro) {
-        echo "<p class='error'><b>ERRO: $erro</b></p>";
+        echo "<p class='text-red-600'><b>ERRO: $erro</b></p>";
     } else {
         $sql_code = "INSERT INTO fornecedores (nome, empresa, contato, data_registro)
         VALUES ('$nome', '$empresa', '$contato', NOW())";
         $funcionou = $mysqli->query($sql_code) or die($mysqli->error);
         if ($funcionou) {
             $sucess = 'FORNECEDOR CADASTRADO COM SUCESSO';
-            echo "<p class='success'><b>$sucess</b></p>";
+            echo "<p class='text-green-600'><b>$sucess</b></p>";
             unset($_POST);
         }
     }
@@ -48,28 +48,32 @@ if (count($_POST) > 0) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastrar Fornecedor</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> <!-- Inclui Tailwind CSS -->
 </head>
 
-<body>
+<body class="bg-[#ebe7e0] text-gray-900">
 
-    <div class="container">
-        <a class="back-link" href="fornecedores.php">Voltar</a>
+    <div class="container mx-auto p-6 bg-white rounded-lg shadow-lg mt-6">
+        <a class="bg-gray-700 text-white px-4 py-2 rounded hover:bg-gray-800 transition mb-4 inline-block" href="fornecedores.php">Voltar</a>
+        
+        <h1 class="text-2xl font-bold text-[#44749d] mb-4">Cadastrar Fornecedor</h1>
+
         <form action="" method="post">
-            <p>
-                <label>Nome</label><br>
-                <input value="<?php if (isset($_POST['NomeFornecedor'])) echo $_POST['NomeFornecedor']; ?>" name="NomeFornecedor" type="text">
-            </p>
-            <p>
-                <label>Empresa</label><br>
-                <input value="<?php if (isset($_POST['EmpresaFornecedor'])) echo $_POST['EmpresaFornecedor']; ?>" name="EmpresaFornecedor" type="text">
-            </p>
-            <p>
-                <label>Contato</label><br>
-                <input value="<?php if (isset($_POST['ContatoFornecedor'])) echo $_POST['ContatoFornecedor']; ?>" placeholder="(44)99999-9999" name="ContatoFornecedor" type="text">
-            </p>
-            <p>
-                <button type="submit">Salvar</button>
-            </p>
+            <div class="mb-4">
+                <label for="NomeFornecedor" class="block text-gray-700">Nome</label>
+                <input value="<?php if (isset($_POST['NomeFornecedor'])) echo $_POST['NomeFornecedor']; ?>" name="NomeFornecedor" id="NomeFornecedor" type="text" required class="w-full p-2 border border-gray-300 rounded mt-2">
+            </div>
+            <div class="mb-4">
+                <label for="EmpresaFornecedor" class="block text-gray-700">Empresa</label>
+                <input value="<?php if (isset($_POST['EmpresaFornecedor'])) echo $_POST['EmpresaFornecedor']; ?>" name="EmpresaFornecedor" id="EmpresaFornecedor" type="text" required class="w-full p-2 border border-gray-300 rounded mt-2">
+            </div>
+            <div class="mb-4">
+                <label for="ContatoFornecedor" class="block text-gray-700">Contato</label>
+                <input value="<?php if (isset($_POST['ContatoFornecedor'])) echo $_POST['ContatoFornecedor']; ?>" placeholder="(44)99999-9999" name="ContatoFornecedor" id="ContatoFornecedor" type="text" required class="w-full p-2 border border-gray-300 rounded mt-2">
+            </div>
+            <div class="mb-4">
+                <button type="submit" class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition">Salvar</button>
+            </div>
         </form>
     </div>
 

@@ -4,11 +4,28 @@ $user = "root";
 $pass = "";
 $db = "gerenciadordb";
 
-$mysqli = new mysqli($host, $user, $pass, $db);
+// Conexão inicial sem selecionar banco de dados
+$mysqli = new mysqli($host, $user, $pass);
 
-// Verifica a conexão
+// Verifica a conexão inicial
 if ($mysqli->connect_errno) {
     echo("Conexão Falhou!: " . $mysqli->connect_error); 
+    die();
+}
+
+// Criação do banco de dados se não existir
+$sql_create_db = "CREATE DATABASE IF NOT EXISTS $db";
+if (!$mysqli->query($sql_create_db)) {
+    echo "Erro ao criar banco de dados: " . $mysqli->error;
+    die();
+}
+
+// Seleciona o banco de dados
+$mysqli->select_db($db);
+
+// Verifica a seleção do banco de dados
+if ($mysqli->errno) {
+    echo "Erro ao selecionar banco de dados: " . $mysqli->error;
     die();
 }
 
@@ -58,5 +75,4 @@ if (!$mysqli->query($sql_produtos)) {
     echo "Erro ao criar tabela 'produtos': " . $mysqli->error;
     die();
 }
-
 ?>

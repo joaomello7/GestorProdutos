@@ -12,35 +12,40 @@ $sql_query = $mysqli->query($sql_code) or die($mysqli->error);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fornecedores</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> <!-- Inclui Tailwind CSS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Inclui jQuery -->
 </head>
-<body>
+<body class="bg-[#ebe7e0] text-gray-900">
 
-    <div class="container">
-        <h1>Fornecedores</h1>
-        <a class="back-link" href="painel.php">Voltar ao Painel</a>
-        <a class="back-link" href="cadastrarFornecedor.php">Cadastrar Fornecedor</a>
+    <div class="container mx-auto p-6 bg-white rounded-lg shadow-lg mt-6">
+        <h1 class="text-2xl font-bold text-[#44749d]">Fornecedores</h1>
 
-        <table>
-            <thead>
+        <div class="mt-4">
+            <a href="painel.php"
+               class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition">Voltar ao Painel</a>
+            <a href="cadastrarFornecedor.php"   
+               class="ml-4 bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition">Cadastrar Fornecedor</a>
+        </div>
+
+        <table class="min-w-full mt-6 bg-white border border-gray-300">
+            <thead class="bg-[#44749d] text-black">
                 <tr>
-                    <th>Nome</th>
-                    <th>Empresa</th>
-                    <th>Contato</th>
-                    <th>Ações</th>
+                    <th class="py-2 px-4 text-left">Nome</th>
+                    <th class="py-2 px-4 text-left">Empresa</th>
+                    <th class="py-2 px-4 text-left">Contato</th>
+                    <th class="py-2 px-4 text-left">Ações</th>
                 </tr>
             </thead>
             <tbody id="fornecedores-tbody"> <!-- ID para acessar via jQuery -->
                 <?php while ($fornecedor = $sql_query->fetch_assoc()): ?>
-                    <tr id="fornecedor-<?php echo $fornecedor['id']; ?>"> <!-- Adiciona um ID único para cada linha -->
-                        <td><?php echo $fornecedor['nome']; ?></td>
-                        <td><?php echo $fornecedor['empresa']; ?></td>
-                        <td><?php echo $fornecedor['contato']; ?></td>
-                        <td>
-                            <!-- Link para editar o fornecedor -->
-                            <a href="editarFornecedor.php?id=<?php echo $fornecedor['id']; ?>">Editar</a> | 
-                            <!-- Botão para deletar via AJAX -->
-                            <button class="delete-btn" data-id="<?php echo $fornecedor['id']; ?>">Deletar</button>
+                    <tr id="fornecedor-<?php echo $fornecedor['id']; ?>" class="border-b">
+                        <td class="py-2 px-4"><?php echo $fornecedor['nome']; ?></td>
+                        <td class="py-2 px-4"><?php echo $fornecedor['empresa']; ?></td>
+                        <td class="py-2 px-4"><?php echo $fornecedor['contato']; ?></td>
+                        <td class="py-2 px-4">
+                            <a href="editarFornecedor.php?id=<?php echo $fornecedor['id']; ?>"
+                               class="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition">Editar</a>
+                            <button class="delete-btn bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 ml-2 transition" data-id="<?php echo $fornecedor['id']; ?>">Deletar</button>
                         </td>
                     </tr>
                 <?php endwhile; ?>
