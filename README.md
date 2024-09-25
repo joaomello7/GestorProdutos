@@ -6,16 +6,25 @@ Você pode visualizar o protótipo do projeto no Figma através do link abaixo:h
 ## Diagrama Entidade-Relacionamento (DER)
 
 ### Tabelas e Relacionamentos
+Login
+id_login (Chave Primária)
+nome_login
+senha_login
+senha_criptografada
 
-+------------------+        +-------------------+        +------------------+
-|     Fornecedores |        |      Produtos     |        |      Login        |
-+------------------+        +-------------------+        +------------------+
-| id (PK)          |<-------| id (PK)           |        | id_login (PK)     |
-| nome             |        | nome              |        | nome_login        |
-| data_registro    |        | descricao         |        | senha_login       |
-| empresa          |        | valor             |        | senha_criptografada|
-| contato          |        | quantidade        |        +------------------+
-+------------------+        | total             |
-                             | fornecedor_id (FK)|
-                             | data_registro     |
-                             +------------------+
+Fornecedores
+id (Chave Primária)
+nome
+data_registro
+empresa
+contato
+
+Produtos
+id (Chave Primária)
+nome
+descricao
+valor
+quantidade
+total (Atributo derivado)
+fornecedor_id (Chave Estrangeira que referencia fornecedores.id)
+data_registro
