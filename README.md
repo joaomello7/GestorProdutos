@@ -5,4 +5,4 @@ Você pode visualizar o protótipo do projeto no Figma através do link abaixo:h
 
 ## Diagrama Entidade-Relacionamento (DER)
 
-![Diagrama Entidade-Relacionamento](imagem/der.png)
+![Diagrama Entidade-Relacionamento](imagem/der.jpeg)
