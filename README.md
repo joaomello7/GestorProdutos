@@ -35,9 +35,9 @@ Este projeto foi desenvolvido como parte da disciplina de Programação para Int
 ## Figma: https://www.figma.com/design/xeEBa9zqcT1Kn19U2IxSoP/Untitled?node-id=0-1&m=dev&t=i3v7Vg4JRZaFO703-1
 
 # Integrantes
-Vinicius Correia de Andrade 
+- **Vinicius Correia de Andrade**
 Ra: 251953-1
-João Pedro de Mello Delgado 
+- **João Pedro de Mello Delgado**
 Ra: 246387-1
-Kaua Aparecido
-ra:251109-1
+- **Kauã Aparecido de Matos**
+Ra: 251109-1
