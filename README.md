@@ -33,3 +33,10 @@ Este projeto foi desenvolvido como parte da disciplina de Programação para Int
 ![der](https://github.com/user-attachments/assets/90cbec06-d53d-48ea-954b-2e0ebfd0efc1)
 
 ## Figma: https://www.figma.com/design/xeEBa9zqcT1Kn19U2IxSoP/Untitled?node-id=0-1&m=dev&t=i3v7Vg4JRZaFO703-1
+
+# Integrantes
+Vinicius Correia de Andrade 
+Ra: 251953-1
+João Pedro de Mello Delgado 
+Ra: 246387-1
+Kaua Aparecido
